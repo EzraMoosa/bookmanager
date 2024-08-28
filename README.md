@@ -8,7 +8,7 @@ Book Manager is a command-line interface (CLI) application designed to manage a 
 2. [Requirements](#requirements)
 3. [Installation](#installation)
 4. [Usage](#usage)
-5. [Credits](#notes)
+5. [Credits](#credits)
 
 ## Features
 
@@ -61,4 +61,8 @@ Book Manager is a command-line interface (CLI) application designed to manage a 
     ![View All](screenshots/all.png)
 
 ## Credits
+This project was made possible by the contributions of the following individuals:
+- **[Ezra Moosa](https://github.com/EzraMoosa)**
+
+For more information, visit the [Book Manager Repository](https://github.com/EzraMoosa/bookmanager).
 
