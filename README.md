@@ -43,9 +43,19 @@ Book Manager is a command-line interface (CLI) application designed to manage a 
  
 - **Screenshots:**
     Main Menu:
-    ![Main Menu](screenshots/main_menu.png)
+    ![Main Menu](screenshots/menu.png)
+  
     Enter a Book:
+    ![Enter Book](screenshots/enter.png)
+  
     Update a Book:
+    ![Update Book](screenshots/update.png)
+  
     Delete a Book:
+    ![Delete Book](screenshots/delete.png)
+  
     Search Books:
+    ![Search Book](screenshots/search.png)
+  
     View All Books:
+    ![View All](screenshots/view.png)
