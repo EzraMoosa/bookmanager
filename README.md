@@ -28,25 +28,25 @@ Book Manager is a command-line interface (CLI) application designed to manage a 
 ## Installation
 
 - **Clone the Repository:**
--- Clone the repository using git clone https://github.com/EzraMoosa/bookmanager.git
+    Clone the repository using git clone https://github.com/EzraMoosa/bookmanager.git
 
 ## Usage
 - **Start Application:**
-- Open your terminal, navigate to the project directory, and type:
-  python main.py
+    Open your terminal, navigate to the project directory, and type:
+    python main.py
 
 - **Menu Options:**
-  * Enter a Book: Add a new book to the database.
-  * Update a Book: Modify details of an existing book.
-  * Delete a Book: Remove a book from the database.
-  * Search Books: Find books by ID, title, or author.
-  * View All Books: Display all books in the database.
-  * Exit: Close the application.
+    * Enter a Book: Add a new book to the database.
+    * Update a Book: Modify details of an existing book.
+    * Delete a Book: Remove a book from the database.
+    * Search Books: Find books by ID, title, or author.
+    * View All Books: Display all books in the database.
+    * Exit: Close the application.
  
 - **Screenshots:**
-  Main Menu:
-  Enter a Book:
-  Update a Book:
-  Delete a Book:
-  Search Books:
-  View All Books:
+    Main Menu:
+    Enter a Book:
+    Update a Book:
+    Delete a Book:
+    Search Books:
+    View All Books:
