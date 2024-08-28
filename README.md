@@ -22,11 +22,15 @@ Book Manager is a command-line interface (CLI) application designed to manage a 
 
 - Python 3.x
 - SQLite3
+- Tabulate 0.9.x
 
 ## Installation
 
 - **Clone the Repository:**
     Clone the repository using git clone https://github.com/EzraMoosa/bookmanager.git
+
+- **Install tablulate package:**
+    pip install -r requirements.txt
 
 ## Usage
 - **Start Application:**
