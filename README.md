@@ -16,6 +16,19 @@ project if the project has been created by more than one person
 
 ## Book Manager is a command-line interface (CLI) application designed to manage a collection of books using a SQLite database. It allows users to add, update, delete, search, and view book records.
 
+
+Table of Contents
+1. Features
+2. Requirements
+3. Installation
+4. Usage
+5. Running the Program
+6. Menu Options
+7. Notes
+8. Troubleshooting
+9. References
+10. License
+
 ###
 The program has the following functions:
   * Enter a Book: Add a new book to the database.
