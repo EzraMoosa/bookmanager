@@ -28,7 +28,7 @@ Book Manager is a command-line interface (CLI) application designed to manage a 
 ## Installation
 
 - **Clone the Repository:**
-- To install the Book Manager locally, clone the repository using git clone https://github.com/EzraMoosa/bookmanager.git
+-- Clone the repository using git clone https://github.com/EzraMoosa/bookmanager.git
 
 ## Usage
 - **Start Application:**
