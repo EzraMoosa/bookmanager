@@ -12,9 +12,9 @@ they’ve installed it. Include screenshots of your project in action.
 ○ A section for credits which highlights and links to the authors of your
 project if the project has been created by more than one person
 
-#Book Manager
+# Book Manager
 
-##Book Manager is a command-line interface (CLI) application designed to manage a collection of books using a SQLite database. It allows users to add, update, delete, search, and view book records.
+## Book Manager is a command-line interface (CLI) application designed to manage a collection of books using a SQLite database. It allows users to add, update, delete, search, and view book records.
 
 ###
 The program has the following functions.
