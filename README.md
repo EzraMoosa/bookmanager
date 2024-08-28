@@ -1,4 +1,4 @@
-Book Manager v0.1 (CLI)
+# Book Manager v0.1 (CLI)
 
 Book Manager is a command-line interface (CLI) application designed to manage a collection of books using a SQLite database. It allows users to add, update, delete, search, and view book records.
 
