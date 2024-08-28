@@ -27,15 +27,15 @@ Book Manager is a command-line interface (CLI) application designed to manage a 
 ## Installation
 
 - **Clone the Repository:**
-    Clone the repository using git clone https://github.com/EzraMoosa/bookmanager.git
+    `git clone https://github.com/EzraMoosa/bookmanager.git`
 
 - **Install tablulate package:**
-    pip install -r requirements.txt
+    `pip install -r requirements.txt`
 
 ## Usage
 - **Start Application:**
     Open your terminal, navigate to the project directory, and type:
-    python main.py
+        `python main.py`
 
 - **Menu Options:**
     * Enter a Book: Add a new book to the database.
