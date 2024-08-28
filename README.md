@@ -1,46 +1,52 @@
-Add a detailed README file for each project that you have pushed to
-GitHub. README files should contain the following:
-○ The project name.
-○ A clear, short, and to the point description of your project. Describe
-the importance of your project, and what it does.
-○ A table of Contents to allow other people to quickly navigate
-especially long or detailed READMEs.
-○ An installation section which tells other users how to install your
-project locally.
-○ A usage section that instructs others on how to use your project after
-they’ve installed it. Include screenshots of your project in action.
-○ A section for credits which highlights and links to the authors of your
-project if the project has been created by more than one person
+v# Book Manager
 
-# Book Manager v0.1 (CLI)
+Book Manager is a command-line interface (CLI) application designed to manage a collection of books using a SQLite database. It allows users to add, update, delete, search, and view book records.
 
-## Book Manager is a command-line interface (CLI) application designed to manage a collection of books using a SQLite database. It allows users to add, update, delete, search, and view book records.
+## Table of Contents
 
+1. [Features](#features)
+2. [Requirements](#requirements)
+3. [Installation](#installation)
+4. [Usage](#usage)
+    - [Running the Program](#running-the-program)
+    - [Menu Options](#menu-options)
+5. [Notes](#notes)
 
-Table of Contents
-1. Features
-2. Requirements
-3. Installation
-4. Usage
-5. Running the Program
-6. Menu Options
-7. Notes
-8. Troubleshooting
-9. References
-10. License
+## Features
 
-###
-The program has the following functions:
+- **Enter a Book**: Add a new book to the database.
+- **Update a Book**: Modify details of an existing book.
+- **Delete a Book**: Remove a book from the database.
+- **Search Books**: Find books by ID, title, or author.
+- **View All Books**: Display all books in the database.
+
+## Requirements
+
+- Python 3.x
+- SQLite3
+
+## Installation
+
+- **Clone the Repository:**
+- To install the Book Manager locally, clone the repository using git clone https://github.com/EzraMoosa/bookmanager.git
+
+## Usage
+- **Start Application:**
+- Open your terminal, navigate to the project directory, and type:
+  python main.py
+
+- **Menu Options:**
   * Enter a Book: Add a new book to the database.
   * Update a Book: Modify details of an existing book.
   * Delete a Book: Remove a book from the database.
   * Search Books: Find books by ID, title, or author.
   * View All Books: Display all books in the database.
-
-###
-Requirements:
-  * Python 3.x
-  * SQLite3
-
-
-
+  * Exit: Close the application.
+ 
+- **Screenshots:**
+  Main Menu:
+  Enter a Book:
+  Update a Book:
+  Delete a Book:
+  Search Books:
+  View All Books:
