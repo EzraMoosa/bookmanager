@@ -17,7 +17,7 @@ def main_menu():
     while True:
 
         loading_screen()
-        
+
         clear()
 
         option = input(f"""
@@ -31,9 +31,9 @@ Choose an option from below:
 4 - Search books
 5 - View all books
 
-0 - Exit                            
+0 - Exit
 : """)
-    
+
         if option == "1":
             clear()
             enter_book()
@@ -56,6 +56,7 @@ Choose an option from below:
 
         elif option == "0":
             clear()
+            print("\n--- Thank you for using Book Manager ---")
             print("\n--- Exiting application. Goodbye. ---\n")
             exit()
 
@@ -64,7 +65,7 @@ Choose an option from below:
             print("""
 --- Invalid Selection. Enter an option between 1 - 5 or 0 to Exit ---""")
             time.sleep(WAIT * 1.5)
-    
+
 
 # Call to enter a new book
 def enter_book():
@@ -75,9 +76,9 @@ def enter_book():
         cursor = connection.cursor()
 
         while True:
-            print("Enter the following information of the new book or" + \
+            print("Enter the following information of the new book or" +
                   "\n0 to return to the Main Menu:\n")
-            
+
             id_code = input("ID (eg.1234): ")
             if id_code == '0':
                 print("\n--- Returning to Main Menu ---")
@@ -93,19 +94,19 @@ def enter_book():
 
             # Check that user's ID is a number with 4-digits
             while not id_code.isdigit() or len(id_code) != 4:
-                    id_code = input("""
+                id_code = input("""
 --- ID Code needs to consist of 4 whole numbers. Try again. ---
 
 ID (eg.1234): """)
-                    
+
             # Check that user inputs is not empty
             title = input("\nTitle: ").title()
             while not title.strip():
                 title = input("""
---- Title cannot be 'empty'. Enter a valid input. ---                 
+--- Title cannot be 'empty'. Enter a valid input. ---
 
 Title: """).title()
-                
+
             author = input("\nAuthor: ").title()
             while not author.strip():
                 author = input("""
@@ -115,11 +116,11 @@ Author: """).title()
 
             # Check if title and author is the same, might be duplicate entry
             cursor.execute(
-                "SELECT * FROM book WHERE title = ? AND author = ?", \
-                    (title, author))
+                "SELECT * FROM book WHERE title = ? AND author = ?",
+                (title, author))
             existing_book = cursor.fetchone()
             if existing_book:
-                print("\n--- A book with the same Title and Author" +\
+                print("\n--- A book with the same Title and Author" +
                       " already exists. Try again. ---\n")
                 continue
 
@@ -127,7 +128,7 @@ Author: """).title()
             quantity = input("\nQuantity: ")
             while not quantity.isdigit() or int(quantity) < 0:
                 quantity = input("""
---- Quantity needs to be a positive whole number. Enter a valid input. ---                
+--- Quantity needs to be a positive whole number. Enter a valid input. ---
 
 Quantity: """)
 
@@ -145,12 +146,12 @@ Quantity: """)
             print("\n--- Book added successfully. ---\n")
             time.sleep(WAIT * .7)
             return
-            
+
     except sqlite3.Error as sqe:
         print(f"\n--- Error occurred while adding the book: {sqe} ---")
         connection.rollback()
         return
-        
+
     except Exception as e:
         print(f"\n--- Error: {e} ---")
         return
@@ -173,20 +174,20 @@ def update_book():
             if id_code == "0" or id_code.strip() == "":
                 print("\n--- Returning to Main Menu ---")
                 return
-            
+
             # Search record with ID
             cursor.execute("SELECT * FROM book WHERE id = ?", (id_code,))
             book = cursor.fetchone()
-            
+
             if not book:
-                print(f"\n--- Book with ID '{id_code}' does not exist. " + \
+                print(f"\n--- Book with ID '{id_code}' does not exist. "
                       "Please enter a valid ID. ---")
                 continue
 
             clear()
             print("\nSelected Record:\n----------------\n")
             record = [list(book)]
-            print(tabulate(record, headers=['ID', 'Title', 'Author', \
+            print(tabulate(record, headers=['ID', 'Title', 'Author',
                                             'Quantity'], tablefmt='presto'))
             while True:
                 option = input("""
@@ -205,15 +206,15 @@ Enter new 'Title' or press Enter to leave unchanged:
 --------------------------------------------------
 Title    : {book[1]}
 New Title: """)
-                    
+
                     if title.strip() == "":
                         print("\n--- Book Title unchanged. ---")
                         return
-                    
+
                     else:
                         # Update the book in the database
                         cursor.execute("""
-                            UPDATE book SET title=?, author=?, qty=? 
+                            UPDATE book SET title=?, author=?, qty=?
                             WHERE id=?""", (title, book[2], book[3], id_code))
 
                         # Commit changes, close cursor and connection
@@ -230,15 +231,15 @@ Enter new 'Author' or press Enter to leave unchanged:
 -----------------------------------------------------
 Author    : {book[2]}
 New Author: """)
-                    
+
                     if author.strip() == "":
                         print("\n--- Book Author unchanged. ---")
                         return
-                    
+
                     else:
                         # Update the book in the database
                         cursor.execute("""
-                            UPDATE book SET title=?, author=?, qty=? 
+                            UPDATE book SET title=?, author=?, qty=?
                             WHERE id=?""", (book[1], author, book[3], id_code))
 
                         # Commit changes, close cursor and connection
@@ -247,7 +248,7 @@ New Author: """)
                         connection.close()
                         print("\n--- Book successfully updated. ---")
                         return
-                    
+
                 elif option == "3":
                     while True:
                         clear()
@@ -260,9 +261,9 @@ New Quantity: """)
                         if quantity.strip() == "":
                             print("\n--- Book quantity unchanged. ---")
                             return
-                        
+
                         # Check if quantity is valid number
-                        elif quantity.isdigit() == False or int(quantity) < 0:
+                        elif quantity.isdigit() is False or int(quantity) < 0:
                             print("""
 --- Quantity needs to be a positive number. Please try again. ---""")
                             time.sleep(WAIT * 2)
@@ -271,8 +272,8 @@ New Quantity: """)
                         else:
                             # Update the book in the database
                             cursor.execute("""
-                                UPDATE book SET title=?, author=?, qty=? 
-                                WHERE id=?""", (book[1], book[2], quantity, \
+                                UPDATE book SET title=?, author=?, qty=?
+                                WHERE id=?""", (book[1], book[2], quantity,
                                                 id_code))
 
                             # Commit changes, close cursor and connection
@@ -280,14 +281,14 @@ New Quantity: """)
                             cursor.close()
                             connection.close()
                             print("\n--- Book successfully updated. ---")
-                            return                    
-                                
+                            return
+
                 elif option == "0":
                     print("\n--- Returning to Main Menu ---")
                     return
-                
+
                 else:
-                    print("\n--- Invalid Option. Try Again. ---")    
+                    print("\n--- Invalid Option. Try Again. ---")
 
     except sqlite3.Error as sqe:
         print(f"\n--- Error occurred while updating the book: {sqe} ---")
@@ -306,12 +307,12 @@ def delete_book():
         # Connect to database, create cursor object and get all books
         connection = sqlite3.connect(DATABASE)
         cursor = connection.cursor()
-        
+
         view_all("no")
 
         # Valid ID and delete record
         while True:
-            id_code = input("\nEnter the ID of the book to delete or " +\
+            id_code = input("\nEnter the ID of the book to delete or "
                             "Enter 0 to return to the Main Menu: ")
             if id_code == "0":
                 print("\n--- Returning to Main Menu ---")
@@ -327,21 +328,21 @@ def delete_book():
         clear()
         print("\nSelected Record:\n----------------\n")
         record = [list(book)]
-        print(tabulate(record, headers=['ID', 'Title', 'Author', \
-                                            'Quantity'], tablefmt='presto'))
+        print(tabulate(record, headers=['ID', 'Title', 'Author', 'Quantity'],
+                       tablefmt='presto'))
 
         while True:
             # Confirm deletion
-            confirm = input(f"""
+            confirm = input("""
 Are you sure you want to delete:
 --------------------------------
 (Yes/ No): """).lower()
-            
+
             # If invalid inputs are received
             if confirm not in ["no", "n", "yes", "y"]:
                 print("\n--- Invalid input. Try again. ---")
                 continue
-            
+
             # Cancel deletion
             if confirm in ["no", "n"]:
                 cursor.close()
@@ -361,7 +362,7 @@ Are you sure you want to delete:
                 connection.close()
                 print("\n--- Book record deleted successfully. ---")
                 return
-                
+
     except sqlite3.Error as sqe:
         print(f"\n--- Error occurred while deleting the book: {sqe}---")
         connection.rollback()
@@ -391,10 +392,10 @@ Search books by:
 
         # ID option
         if option == '1':
-            id_code = input("\nEnter the ID or partial ID of the book or" + \
+            id_code = input("\nEnter the ID or partial ID of the book or"
                             " '-1' to return: ")
             if id_code == '-1':
-                continue  
+                continue
             search_books("id", id_code)
 
         # Title option
@@ -402,22 +403,22 @@ Search books by:
             title = input(
                 "\nEnter the Title or keyword of the book or '-1' to return: ")
             if title == '-1':
-                continue  
+                continue
             search_books("title", title)
 
         # Author option
         elif option == '3':
             author = input(
-                "\nEnter the Author or keyword of the book or" +\
-                    " '-1' to return: ")
+                "\nEnter the Author or keyword of the book or \
+                '-1' to return: ")
             if author == '-1':
-                continue 
+                continue
             search_books("author", author)
 
         elif option == '0':
             print("\n--- Returning to Main Menu ---")
             return
-            
+
         else:
             print("""\n--- Invalid option. Please enter a number" + \
                     " between 1 - 3 or 0 to return to Main Menu ---""")
@@ -431,26 +432,26 @@ def search_books(criteria, value):
         cursor = connection.cursor()
 
         # Search for books based on the given criteria
-        cursor.execute(f"SELECT * FROM book WHERE {criteria} LIKE ?", \
-                      (f"%{value}%",))
+        cursor.execute(f"SELECT * FROM book WHERE {criteria} LIKE ?",
+                       (f"%{value}%",))
         books = cursor.fetchall()
 
         # Check if keyword are valid and print books
         if not books:
             print("\n--- No books found matching the search criteria. ---")
         else:
-            headers = ["ID", "Title", "Author", "Quantity"]
             books_formatted = \
                 [(book[0], book[1], book[2], book[3]) for book in books]
             print("\nBook(s) found:\n--------------\n")
-            print(tabulate(books_formatted, headers=['ID', 'Title', 'Author', \
-                                            'Quantity'], tablefmt='presto'))
+            print(tabulate(
+                books_formatted, headers=['ID', 'Title', 'Author', 'Quantity'],
+                tablefmt='presto'))
 
     except sqlite3.Error as sqe:
         print(f"\n--- Error: {sqe}---")
         connection.rollback()
         return
-    
+
     finally:
         # Close cursor, connection and return to main menu
         cursor.close()
@@ -475,14 +476,14 @@ def view_all(menu_option):
 
         # Show all books
         print("\nAll book records:\n-----------------\n")
-        print(tabulate(books, headers=['ID', 'Title', 'Author', 'Quantity'], \
+        print(tabulate(books, headers=['ID', 'Title', 'Author', 'Quantity'],
                        tablefmt="presto"))
-        
+
     except sqlite3.Error as sqe:
         print(f"\n--- Error: {sqe} ---")
         connection.rollback()
         return
-    
+
     finally:
         cursor.close()
         connection.close()
@@ -509,24 +510,29 @@ def initialize():
             # Create book table
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS book
-                (id INTEGER(4) PRIMARY KEY, 
-                 title TEXT, 
-                 author TEXT, 
+                (id INTEGER(4) PRIMARY KEY,
+                 title TEXT,
+                 author TEXT,
                  qty INTEGER)
             """)
 
             # Insert data into book table
-            cursor.executemany("""
-                INSERT INTO book (id, title, author, qty) 
-                VALUES(?, ?, ?, ?)""",
-                [(3001, "A Tale Of Two Cities", "Charles Dickens", 30),
-                (3002, "Harry Potter and the Philosopher's Stone", \
-                    "J.K. Rowling", 40),
-                (3003, "The Lion, the Witch and the Wardrobe", "C.S. Lewis", \
-                 25),
-                (3004, "The Lord of the Rings", "J.R.R Tolkien", 37),
-                (3005, "Alice in Wonderland", "Lewis Carroll", 12)])
-            
+            cursor.executemany(
+                """
+                INSERT INTO book (id, title, author, qty)
+                VALUES(?, ?, ?, ?)
+                """,
+                [
+                    (3001, "A Tale Of Two Cities", "Charles Dickens", 30),
+                    (3002, "Harry Potter and the Philosopher's Stone", "J.K." +
+                     " Rowling", 40),
+                    (3003, "The Lion, the Witch and the Wardrobe", "C.S." +
+                     "Lewis", 25),
+                    (3004, "The Lord of the Rings", "J.R.R. Tolkien", 37),
+                    (3005, "Alice in Wonderland", "Lewis Carroll", 12)
+                ]
+            )
+
             # Commit changes, close cursor and connection
             connection.commit()
             cursor.close()
@@ -538,7 +544,7 @@ def initialize():
         print(f"\n--- Error: {sqe} ---")
         connection.rollback()
         return
-    
+
     except Exception as e:
         print(f"\n--- Error: {e} ---")
         return
@@ -546,7 +552,7 @@ def initialize():
 
 # Call to clear terminal
 def clear():
-    os.system("cls" if os.name=="nt" else "clear")
+    os.system("cls" if os.name == "nt" else "clear")
 
 
 # Call to load screen
@@ -554,7 +560,7 @@ def loading_screen(animation_speed=0.05):
     print()
     chars = "/—\|"
     # Calculate number of iterations per character
-    num_iterations = int(1 / (len(chars) * animation_speed))  
+    num_iterations = int(1 / (len(chars) * animation_speed))
     for i in range(num_iterations):
         for char in chars:
             sys.stdout.write(f"\r{char} ")
@@ -562,7 +568,7 @@ def loading_screen(animation_speed=0.05):
             time.sleep(animation_speed)
     sys.stdout.write("\r")
     sys.stdout.flush()
-        
+
 
 if __name__ == "__main__":
     initialize()
