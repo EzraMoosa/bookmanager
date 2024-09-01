@@ -1,14 +1,3 @@
-# References:
-# https://pypi.org/project/tabulate/
-# https://stackoverflow.com/questions/8933237/how-do-i-check-if-a-directory-exists-in-python
-# https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html
-# https://stackoverflow.com/questions/6470428/how-to-catch-multiple-exceptions-in-one-line-in-the-except-block
-# https://stackoverflow.com/questions/5504340/python-mysqldb-connection-close-vs-cursor-close
-# https://stackoverflow.com/questions/28059975/sqlite-select-from-where-column-contains-string
-# https://stackoverflow.com/questions/517970/how-can-i-clear-the-interpreter-console
-# https://stackoverflow.com/questions/22029562/python-how-to-make-simple-animated-loading-while-process-is-running
-
-
 # Import libraries and modules
 import sqlite3
 import os
@@ -20,6 +9,7 @@ from tabulate import tabulate
 # Variables
 DATABASE = "DATA/ebookstore.db"
 WAIT = 1
+VERSION = 0.2
 
 
 # Main menu of Book Manager
@@ -29,8 +19,9 @@ def main_menu():
         loading_screen()
         
         clear()
-        option = input("""
-Book Manager v0.1 (CLI)
+
+        option = input(f"""
+Book Manager v{VERSION} (CLI)
 -----------------------
 Choose an option from below:
 ----------------------------
@@ -576,3 +567,14 @@ def loading_screen(animation_speed=0.05):
 if __name__ == "__main__":
     initialize()
     main_menu()
+
+
+# References:
+# https://pypi.org/project/tabulate/
+# https://stackoverflow.com/questions/8933237/how-do-i-check-if-a-directory-exists-in-python
+# https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html
+# https://stackoverflow.com/questions/6470428/how-to-catch-multiple-exceptions-in-one-line-in-the-except-block
+# https://stackoverflow.com/questions/5504340/python-mysqldb-connection-close-vs-cursor-close
+# https://stackoverflow.com/questions/28059975/sqlite-select-from-where-column-contains-string
+# https://stackoverflow.com/questions/517970/how-can-i-clear-the-interpreter-console
+# https://stackoverflow.com/questions/22029562/python-how-to-make-simple-animated-loading-while-process-is-running
